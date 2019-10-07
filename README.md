@@ -13,7 +13,8 @@ In order to build and run this service locally you need:
 ```
 - java 11
 - kotlin 1.3
-- maven 3.x (all artifacts available on central repository) 
+- maven 3.6 ...well not really since there is already a maven wrapper in project
+so you can use it without installing mvn  
 
 ```
 
@@ -23,6 +24,8 @@ In order to build this project you need to run
 
 ```
 mvn clean install 
+or
+./mvnw clean install
 ```
 in root of the project. Another option is opening the project in your favorite IDE and executing same life cycles in maven plugin.
 
