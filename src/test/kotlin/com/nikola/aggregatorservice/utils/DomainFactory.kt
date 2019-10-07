@@ -6,12 +6,12 @@ import com.nikola.aggregatorservice.domain.*
 object DomainFactory {
 
     const val DEFAULT_POA_ID = 1
-    const val DEFAULT_POA_GRANTOR = "testGrantor"
-    const val DEFAULT_POA_GRANTEE = "testGrantee"
-    const val DEFAULT_POA_ACCOUNT = "testAccount"
-    const val DEFAULT_POA_DIRECTION = "testDirection"
-    val DEFAULT_POA_AUTHORISATIONS = listOf(Authorization.DEBIT_CARD)
-    val DEFAULT_POA_CARDS = listOf(CardSummary(1, CardType.DEBIT_CARD))
+    private const val DEFAULT_POA_GRANTOR = "testGrantor"
+    private const val DEFAULT_POA_GRANTEE = "testGrantee"
+    private const val DEFAULT_POA_ACCOUNT = "testAccount"
+    private const val DEFAULT_POA_DIRECTION = "testDirection"
+    private val DEFAULT_POA_AUTHORISATIONS = listOf(Authorization.DEBIT_CARD)
+    private val DEFAULT_POA_CARDS = listOf(CardSummary(1, CardType.DEBIT_CARD))
 
     const val DEFAULT_CC_ID = 22
     val DEFAULT_CARD_STATUS = CardStatus.ACTIVE

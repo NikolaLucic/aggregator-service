@@ -35,7 +35,7 @@ class PowerOfAttorneyAdapterTest {
         whenever(adapterUtils.createGetRequest(any())).thenReturn(httpRequest)
         whenever(adapterUtils.getResponse(any(), any())).thenReturn(DomainFactory.getDefaultPOA().asJson())
 
-        val result = underTest.getById(1)
+        val result = underTest.getById(DomainFactory.DEFAULT_POA_ID)
 
         assertNotNull(result)
         assertEquals(DomainFactory.getDefaultPOA(), result)
@@ -45,11 +45,13 @@ class PowerOfAttorneyAdapterTest {
     fun `get by non existing id test`() {
         whenever(adapterUtils.createGetRequest(any())).thenReturn(httpRequest)
         whenever(adapterUtils.getResponse(any(), any()))
-            .thenThrow(ServiceRuntimeException(400_001, "Exception message"))
+            .thenThrow(ServiceRuntimeException(400_001, "Exception message."))
 
-        val exception = assertFailsWith<ServiceRuntimeException> {  underTest.getById(1)}
+        val exception = assertFailsWith<ServiceRuntimeException> { underTest.getById(DomainFactory.DEFAULT_POA_ID) }
 
         assertEquals(400_001, exception.errorCode)
+        assertEquals("Exception message.", exception.message)
+
     }
 
     @Test

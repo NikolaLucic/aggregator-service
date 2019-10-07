@@ -42,14 +42,16 @@ class PowerOfAttorneyServiceTest {
     }
 
     @Test
-    fun `adapter throwns exception test`() {
-        whenever(poaAdapter.getById(DomainFactory.DEFAULT_POA_ID)).thenReturn(DomainFactory.getDefaultPOA())
+    fun `adapter throws exception test`() {
+        whenever(poaAdapter.getById(DomainFactory.DEFAULT_POA_ID)).thenThrow(ServiceRuntimeException(1, "Excepition message."))
 
-        val result = underTest.getPowerOfAttorneyById(DomainFactory.DEFAULT_POA_ID)
+        val exception =
+            assertFailsWith<ServiceRuntimeException> { underTest.getPowerOfAttorneyById(DomainFactory.DEFAULT_POA_ID) }
         verify(poaAdapter, times(1)).getById(DomainFactory.DEFAULT_POA_ID)
 
-        assertNotNull(result)
-        assertEquals(DomainFactory.getDefaultPOA(), result)
+        assertEquals(1, exception.errorCode )
+        assertEquals("Excepition message.", exception.message )
+
     }
 
 }
